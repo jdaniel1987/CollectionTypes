@@ -19,15 +19,15 @@ internal class Program
     }
 
     public static IEnumerable<int> GetNumbersDeferredExecution() =>
-        // Deferred execution, DANGEROUS
+        // Deferred execution, Lazy evaluation, DANGEROUS
         Enumerable.Range(1, 5).Select(_ => new Random().Next(1, 100));
     public static List<int> GetNumbersAsList() =>
-        // Full list access
+        // Full list access, Mutability
         Enumerable.Range(1, 5).Select(_ => new Random().Next(1, 100)).ToList();
     public static IEnumerable<int> GetNumbersMaterialized() =>
-        // Materialized collection, flexibility
+        // Materialized collection, flexible conversion
         Enumerable.Range(1, 5).Select(_ => new Random().Next(1, 100)).ToList();
     public static IReadOnlyCollection<int> GetReadOnlyNumbers() =>
-        // Materialized collection, immutable
+        // Materialized collection, Immutability
         Enumerable.Range(1, 5).Select(_ => new Random().Next(1, 100)).ToList();
 }
